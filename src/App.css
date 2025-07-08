@@ -1,0 +1,171 @@
+/* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f9fc;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2e86de;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.left-panel,
+.right-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.styled-box {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.styled-input {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccd4e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.styled-button {
+  padding: 10px 16px;
+  margin: 0.5rem 0.25rem 0 0;
+  background-color: #2e86de;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.styled-button:hover {
+  background-color: #1b4f72;
+}
+
+.styled-button.secondary {
+  background-color: #5c6bc0;
+}
+
+.styled-button.secondary:hover {
+  background-color: #3949ab;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #d0d7e2;
+  padding: 8px 12px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.styled-table th {
+  background-color: #eaf1f8;
+  color: #333;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f8fbfd;
+}
+
+.site-footer {
+  background-color: #e0e0e0;
+  color: #333;
+  text-align: center;
+  padding: 1rem;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  margin: 0 !important;
+}
+
+.site-footer a {
+  color: #0077b6;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.mic-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ✅ Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .styled-box {
+    padding: 0.8rem;
+  }
+
+  .styled-input,
+  .styled-button,
+  select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .mic-button {
+    font-size: 18px;
+  }
+
+  .site-footer {
+    font-size: 12px;
+    padding: 0.8rem;
+  }
+
+  .app-title {
+    font-size: 22px;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 6px 8px;
+  }
+}
