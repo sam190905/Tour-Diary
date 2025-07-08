@@ -1,12 +1,29 @@
-# React + Vite
+# 🧳 Tour Diary Maker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tour Diary Maker is a web application built for employees to log their daily field visits, tasks, and travel details. At the end of the month, users can export their logs in a **well-formatted Excel or PDF sheet** in either **English** or **Marathi**, complete with totals and printable layout.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- ✍️ Add daily tour details (date, work, travel times, distance, locations, vehicle)
+- 🌐 **Bilingual** support – switch between English and Marathi
+- 🗣️ **Voice Typing** for input fields in both Marathi and English
+- 📊 Export to Excel with borders, headings, and total distance/hours
+- 🧾 Export to PDF with Marathi font support and styled formatting
+- 🧹 Delete entries anytime before export
+- 📱 Fully **responsive** – works on mobile and desktop
+- 🔁 Local language support and Google Fonts (Montserrat)
+  
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Technologies Used
+
+- React (Frontend)
+- xlsx (Excel export)
+- jsPDF & html2canvas (PDF generation)
+- Web Speech API (Speech recognition for input)
+- Custom CSS for styling and responsiveness
+
+
+
