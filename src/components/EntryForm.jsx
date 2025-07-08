@@ -1,5 +1,5 @@
 // components/EntryForm.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { translations } from "../translations";
 import { createRecognizer } from "../utils/speechRecognition";
 import "../App.css";
