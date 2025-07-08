@@ -56,8 +56,19 @@ function App() {
               </button>
             )}
           </div>
-          {entries.length > 0 && <EntryTable entries={entries} language={language} onDelete={deleteEntry} />}
-          {entries.length > 0 && <ExportButton entries={entries} language={language} />}
+{entries.length > 0 && (
+  <EntryTable
+    entries={[...entries].sort((a, b) => new Date(a.date) - new Date(b.date))}
+    language={language}
+    onDelete={deleteEntry}
+  />
+)}
+{entries.length > 0 && (
+  <ExportButton
+    entries={[...entries].sort((a, b) => new Date(a.date) - new Date(b.date))}
+    language={language}
+  />
+)}
         </div>
       </div>
     </div>

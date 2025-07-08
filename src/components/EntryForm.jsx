@@ -53,6 +53,7 @@ function EntryForm({ addEntry, language, showLabels }) {
         value={entry.date}
         onChange={handleChange}
         className="styled-input"
+         required
       />
 
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -63,6 +64,7 @@ function EntryForm({ addEntry, language, showLabels }) {
           value={entry.work}
           onChange={handleChange}
           className="styled-input"
+          required
         />
         <button type="button" onClick={() => handleVoiceInput("work")} className="mic-button" title="Voice Input">🎙️</button>
       </div>
