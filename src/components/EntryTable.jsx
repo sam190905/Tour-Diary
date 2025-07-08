@@ -12,13 +12,13 @@ function EntryTable({ entries, language, onDelete }) {
         <thead>
           <tr>
             <th>Date</th>
-            <th>{t.work}</th>
             <th>{t.departure}</th>
             <th>{t.arrival}</th>
             <th>{t.distance}</th>
             <th>{t.from}</th>
             <th>{t.to}</th>
             <th>{t.vehicle}</th>
+            <th>{t.work}</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -26,13 +26,13 @@ function EntryTable({ entries, language, onDelete }) {
           {entries.map((entry, index) => (
             <tr key={index}>
               <td>{entry.date}</td>
-              <td>{entry.work}</td>
               <td>{entry.departureTime}</td>
               <td>{entry.arrivalTime}</td>
               <td>{entry.distance}</td>
               <td>{entry.fromLocation}</td>
               <td>{entry.toLocation}</td>
               <td>{entry.vehicle}</td>
+              <td>{entry.work}</td>
               <td>
                 <button onClick={() => onDelete(index)} className="styled-button secondary">
                   X

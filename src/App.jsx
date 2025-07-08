@@ -38,7 +38,7 @@ function App() {
       <h1 className="app-title">📒 {translations[language].title}</h1>
       <div className="main-layout">
         <div className="left-panel">
-          <EntryForm addEntry={addEntry} language={language} />
+          <EntryForm addEntry={addEntry} language={language} showLabels={{ dateTimeOnly: true }} />
         </div>
         <div className="right-panel">
           <div className="styled-box">
@@ -60,19 +60,6 @@ function App() {
           {entries.length > 0 && <ExportButton entries={entries} language={language} />}
         </div>
       </div>
-
-      <footer className="site-footer">
-        🧑‍💻 Developed by Samarth Purant |
-        <a href="mailto:samarthpurant018@gmail.com">📧 samarthpurant018@gmail.com</a> |
-        <a
-          href="https://www.linkedin.com/in/samarth-purant-0560a2301"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={linkedin} style={{ height: "20px", verticalAlign: "middle" }} alt="LinkedIn" />
-          LinkedIn
-        </a>
-      </footer>
     </div>
   );
 }

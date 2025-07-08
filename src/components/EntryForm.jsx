@@ -1,10 +1,10 @@
 // components/EntryForm.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { translations } from "../translations";
 import { createRecognizer } from "../utils/speechRecognition";
 import "../App.css";
 
-function EntryForm({ addEntry, language }) {
+function EntryForm({ addEntry, language, showLabels }) {
   const t = translations[language];
 
   const [entry, setEntry] = useState({
@@ -46,6 +46,7 @@ function EntryForm({ addEntry, language }) {
 
   return (
     <form onSubmit={handleSubmit} className="styled-box">
+      {showLabels && <label>{t.date}</label>}
       <input
         type="date"
         name="date"
@@ -53,6 +54,7 @@ function EntryForm({ addEntry, language }) {
         onChange={handleChange}
         className="styled-input"
       />
+
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
           type="text"
@@ -64,6 +66,8 @@ function EntryForm({ addEntry, language }) {
         />
         <button type="button" onClick={() => handleVoiceInput("work")} className="mic-button" title="Voice Input">🎙️</button>
       </div>
+
+      {showLabels && <label>{t.departure}</label>}
       <input
         type="time"
         name="departureTime"
@@ -71,6 +75,8 @@ function EntryForm({ addEntry, language }) {
         onChange={handleChange}
         className="styled-input"
       />
+
+      {showLabels && <label>{t.arrival}</label>}
       <input
         type="time"
         name="arrivalTime"
@@ -78,6 +84,7 @@ function EntryForm({ addEntry, language }) {
         onChange={handleChange}
         className="styled-input"
       />
+
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
           type="text"
@@ -89,6 +96,7 @@ function EntryForm({ addEntry, language }) {
         />
         <button type="button" onClick={() => handleVoiceInput("distance")} className="mic-button" title="Voice Input">🎙️</button>
       </div>
+
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
           type="text"
@@ -100,6 +108,7 @@ function EntryForm({ addEntry, language }) {
         />
         <button type="button" onClick={() => handleVoiceInput("fromLocation")} className="mic-button" title="Voice Input">🎙️</button>
       </div>
+
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
           type="text"
@@ -111,6 +120,7 @@ function EntryForm({ addEntry, language }) {
         />
         <button type="button" onClick={() => handleVoiceInput("toLocation")} className="mic-button" title="Voice Input">🎙️</button>
       </div>
+
       <select
         name="vehicle"
         value={entry.vehicle}
@@ -121,6 +131,7 @@ function EntryForm({ addEntry, language }) {
         <option value="private">Private Vehicle</option>
         <option value="walk">Walk</option>
       </select>
+
       <button type="submit" className="styled-button">
         {t.addEntry}
       </button>

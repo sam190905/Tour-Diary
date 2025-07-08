@@ -1,5 +1,4 @@
-// ExportButton.jsx — complete with totals, styling, and PDF/Excel logic (no footer credit)
-
+// ExportButton.jsx
 import React, { useState } from "react";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
@@ -40,19 +39,18 @@ function ExportButton({ entries, language }) {
     infoCell.font = { size: 12 };
 
     sheet.addRow([]);
+
     const headers = language === "mr"
-      ? ["दिनांक", "वेळ पासून", "वेळ पर्यंत", "ठिकाण पासून", "ठिकाण पर्यंत", "वाहनाचा प्रकार", "अंतर (कि.मी)", "कामाचा"]
-      : ["Date", "Departure Time", "Arrival Time", "From Location", "To Location", "Vehicle Type", "Distance (km)", "Work Description"];
+      ? ["दिनांक", "वेळ पासून", "वेळ पर्यंत", "ठिकाण पासून", "ठिकाण पर्यंत", "वाहनाचा प्रकार", "अंतर (कि.मी)", "काम"]
+      : ["Date", "Departure Time", "Arrival Time", "From Location", "To Location", "Vehicle Type", "Distance (km)", "Work"];
 
     const headerRow = sheet.addRow(headers);
     headerRow.eachCell(cell => {
       cell.font = { bold: true };
-      cell.alignment = { horizontal: "center", vertical: "middle" };
+      cell.alignment = { horizontal: "center" };
       cell.border = {
-        top: { style: "thin" },
-        left: { style: "thin" },
-        bottom: { style: "thin" },
-        right: { style: "thin" },
+        top: { style: "thin" }, left: { style: "thin" },
+        bottom: { style: "thin" }, right: { style: "thin" }
       };
       cell.fill = {
         type: "pattern",
@@ -73,12 +71,10 @@ function ExportButton({ entries, language }) {
         entry.work
       ]);
       row.eachCell(cell => {
-        cell.alignment = { horizontal: "center", vertical: "middle", wrapText: true };
+        cell.alignment = { horizontal: "center", wrapText: true };
         cell.border = {
-          top: { style: "thin" },
-          left: { style: "thin" },
-          bottom: { style: "thin" },
-          right: { style: "thin" },
+          top: { style: "thin" }, left: { style: "thin" },
+          bottom: { style: "thin" }, right: { style: "thin" }
         };
       });
     });
@@ -93,17 +89,15 @@ function ExportButton({ entries, language }) {
     }, 0);
 
     sheet.addRow([]);
-    const totalsRow1 = sheet.addRow([t.totalDistance + ':', totalDistance.toFixed(2) + ' km']);
-    const totalsRow2 = sheet.addRow([t.totalHours + ':', totalHours.toFixed(2) + ' hrs']);
+    const totalRow1 = sheet.addRow([t.totalDistance + ':', totalDistance.toFixed(2) + ' km']);
+    const totalRow2 = sheet.addRow([t.totalHours + ':', totalHours.toFixed(2) + ' hrs']);
 
-    [totalsRow1, totalsRow2].forEach(row => {
+    [totalRow1, totalRow2].forEach(row => {
       row.eachCell(cell => {
         cell.font = { bold: true };
         cell.border = {
-          top: { style: "thin" },
-          left: { style: "thin" },
-          bottom: { style: "thin" },
-          right: { style: "thin" },
+          top: { style: "thin" }, left: { style: "thin" },
+          bottom: { style: "thin" }, right: { style: "thin" }
         };
       });
     });
@@ -111,7 +105,7 @@ function ExportButton({ entries, language }) {
     sheet.columns = [
       { width: 15 }, { width: 15 }, { width: 15 },
       { width: 20 }, { width: 20 }, { width: 18 },
-      { width: 15 }, { width: 30 },
+      { width: 15 }, { width: 30 }
     ];
 
     const buffer = await workbook.xlsx.writeBuffer();
@@ -139,18 +133,18 @@ function ExportButton({ entries, language }) {
     doc.text(`${t.name}: ${name}    ${t.post}: ${post}    ${t.office}: ${office}`, pageWidth / 2, 25, { align: "center" });
 
     const headers = language === "mr"
-      ? ["दिनांक", "वेळ पासून", "वेळ पर्यंत", "ठिकाण पासून", "ठिकाण पर्यंत", "वाहनाचा प्रकार", "अंतर (कि.मी)", "कामाचा"]
-      : ["Date", "Departure Time", "Arrival Time", "From Location", "To Location", "Vehicle Type", "Distance (km)", "Work Description"];
+      ? ["दिनांक", "वेळ पासून", "वेळ पर्यंत", "ठिकाण पासून", "ठिकाण पर्यंत", "वाहनाचा प्रकार", "अंतर (कि.मी)", "काम"]
+      : ["Date", "Departure Time", "Arrival Time", "From Location", "To Location", "Vehicle Type", "Distance (km)", "Work"];
 
-    const rows = entries.map((entry) => [
-      entry.date,
-      entry.departureTime,
-      entry.arrivalTime,
-      entry.fromLocation,
-      entry.toLocation,
-      entry.vehicle,
-      entry.distance,
-      entry.work
+    const rows = entries.map(e => [
+      e.date,
+      e.departureTime,
+      e.arrivalTime,
+      e.fromLocation,
+      e.toLocation,
+      e.vehicle,
+      e.distance,
+      e.work
     ]);
 
     autoTable(doc, {
@@ -160,7 +154,6 @@ function ExportButton({ entries, language }) {
       styles: {
         fontSize: 10,
         font: language === "mr" ? "NotoSansDevanagari" : "helvetica",
-        fontStyle: "normal",
         cellPadding: 3,
         halign: 'center',
         valign: 'middle',
@@ -171,8 +164,6 @@ function ExportButton({ entries, language }) {
         fillColor: [22, 160, 133],
         halign: 'center'
       },
-      tableLineColor: [0, 0, 0],
-      tableLineWidth: 0.5,
       margin: { left: 10, right: 10 }
     });
 
